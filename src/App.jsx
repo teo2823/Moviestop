@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { fetchDataFromApi } from './util/tmdb_api'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { getApiConfiguration } from './store/homeSlice'
+import { getApiConfiguration, getGenres } from './store/homeSlice'
 
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
@@ -19,10 +19,11 @@ function App() {
   console.log(url);
 
   useEffect(()=>{
-    apiTesting()
-  },[])
+    fetchApiConfig();
+    genresCall();
+  },[]);
 
-  const apiTesting = () => {
+  const fetchApiConfig = () => {
     fetchDataFromApi('/configuration').then((res)=>{
       console.log(res);
 
@@ -33,6 +34,23 @@ function App() {
       }
       dispatch(getApiConfiguration(url));
     })
+  }
+
+  const genresCall = async () => {
+    let promises = [];
+    let endPoints = ["tv", "movie"];
+    let allGeneres = {}
+
+    endPoints.forEach((url) => {
+      promises.push(fetchDataFromApi(`/genre/${url}/list`))
+    })
+
+    const data = await Promise.all(promises);
+    data.map(({ genres }) => {
+      return genres.map((item)=> (allGeneres[item.id] = item))
+    })
+
+    dispatch(getGenres(allGeneres))
   }
 
   return (
