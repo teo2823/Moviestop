@@ -3,6 +3,15 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import dayjs from "dayjs";
 import "./style.scss";
+import useFetch from "../../../hooks/useFetch";
+import ContentWrapper from "../../../components/contentWrapper/ContentWrapper";
+import Img from "../../../components/animationLoadImage/img";
+import Genres from "../../../components/genres/Genres";
+import PosterFallback from "../../../assets/no-poster.png"
+import CircleRating from "../../../components/circleRating/CircleRating";
+import { PlayIcon } from "./playBtn";
+import VideoPopup from "../../../components/videoPopUp/VideoPopUp";
+
 
 const DetailsBanner = ({ video, crew }) => {
   const [show, setShow] = useState(false);
@@ -59,12 +68,14 @@ const DetailsBanner = ({ video, crew }) => {
                     <Genres data={_genres} />
 
                     <div className="row">
-                      <CircleRating rating={data.vote_average.toFixed(1)} />
+                        <CircleRating
+                            rating={data.vote_average.toFixed(1)}
+                        />
                       <div
                         className="playbtn"
                         onClick={() => {
                           setShow(true);
-                          setVideoId(video.key);
+                          setVideoId(video.key); 
                         }}
                       >
                         <PlayIcon />
@@ -73,20 +84,20 @@ const DetailsBanner = ({ video, crew }) => {
                     </div>
 
                     <div className="overview">
-                      <div className="heading">Overview</div>
-                      <div className="description">{data.overview}</div>
+                      <h2 className="heading">Overview</h2>
+                      <p className="description">{data.overview}</p>
                     </div>
 
                     <div className="info">
                       {data.status && (
                         <div className="infoItem">
-                          <span className="text bold">Status: </span>
+                          <h4 className="text bold">Status: </h4>
                           <span className="text">{data.status}</span>
                         </div>
                       )}
                       {data.release_date && (
                         <div className="infoItem">
-                          <span className="text bold">Release Date: </span>
+                          <h4 className="text bold">Release Date: </h4>
                           <span className="text">
                             {dayjs(data.release_date).format("MMM D, YYYY")}
                           </span>
@@ -94,7 +105,7 @@ const DetailsBanner = ({ video, crew }) => {
                       )}
                       {data.runtime && (
                         <div className="infoItem">
-                          <span className="text bold">Runtime: </span>
+                          <h4 className="text bold">Runtime: </h4>
                           <span className="text">
                             {toHoursAndMinutes(data.runtime)}
                           </span>
@@ -104,7 +115,7 @@ const DetailsBanner = ({ video, crew }) => {
 
                     {director?.length > 0 && (
                       <div className="info">
-                        <span className="text bold">Director: </span>
+                        <h4 className="text bold">Director: </h4>
                         <span className="text">
                           {director?.map((d, i) => (
                             <span key={i}>
@@ -118,7 +129,7 @@ const DetailsBanner = ({ video, crew }) => {
 
                     {writer?.length > 0 && (
                       <div className="info">
-                        <span className="text bold">Writer: </span>
+                        <h4 className="text bold">Writer: </h4>
                         <span className="text">
                           {writer?.map((d, i) => (
                             <span key={i}>
@@ -132,7 +143,7 @@ const DetailsBanner = ({ video, crew }) => {
 
                     {data?.created_by?.length > 0 && (
                       <div className="info">
-                        <span className="text bold">Creator: </span>
+                        <h4 className="text bold">Creator: </h4>
                         <span className="text">
                           {data?.created_by?.map((d, i) => (
                             <span key={i}>
@@ -145,11 +156,11 @@ const DetailsBanner = ({ video, crew }) => {
                     )}
                   </div>
                 </div>
-                <VideoPopup
-                  show={show}
-                  setShow={setShow}
-                  videoId={videoId}
-                  setVideoId={setVideoId}
+                <VideoPopup 
+                    show={show}
+                    setShow={setShow}
+                    videoId={videoId}
+                    setVideoId={setVideoId}
                 />
               </ContentWrapper>
             </React.Fragment>
