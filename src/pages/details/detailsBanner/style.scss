@@ -34,7 +34,7 @@
         background: linear-gradient(
             180deg,
             rgba(4, 21, 45, 0) 0%,
-            #04152d 79.17%
+            #171717 79.17%
         );
         position: absolute;
         bottom: 0;
@@ -66,6 +66,7 @@
             .title {
                 font-size: 28px;
                 line-height: 40px;
+                font-weight: 600;
                 @include md {
                     font-size: 34px;
                     line-height: 44px;
@@ -75,6 +76,7 @@
                 font-size: 16px;
                 line-height: 24px;
                 margin-bottom: 15px;
+                font-weight: 300;
                 font-style: italic;
                 opacity: 0.5;
                 @include md {
@@ -90,9 +92,11 @@
                 margin-bottom: 25px;
                 .heading {
                     font-size: 24px;
+                    font-weight: 400;
                     margin-bottom: 10px;
                 }
                 .description {
+                    font-weight: 200;
                     line-height: 24px;
                     @include md {
                         padding-right: 100px;
@@ -123,6 +127,7 @@
                 .text {
                     font-size: 20px;
                     transition: all 0.7s ease-in-out;
+                    
                 }
                 .triangle {
                     stroke-dasharray: 240;
@@ -173,8 +178,9 @@
                     margin-right: 10px;
                     opacity: 0.5;
                     line-height: 24px;
+                    font-weight: 200;
                     &.bold {
-                        font-weight: 600;
+                        font-weight: 400;
                         opacity: 1;
                     }
                 }

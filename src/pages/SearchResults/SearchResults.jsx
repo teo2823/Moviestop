@@ -77,8 +77,7 @@ const SearchResult = () => {
             </>
           ) : (
             <div>
-              <span className="resultNotFound">Sorry, Results not found!</span>
-              <img src={noResults} />
+              <span className="resultNotFound">Sorry, Results not found :(</span>
             </div>
           )}
         </ContentWrapper>

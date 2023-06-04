@@ -4,7 +4,7 @@
     position: fixed;
     transform: translateY(0);
     width: 100%;
-    height: 60px;
+    height: 80px;
     z-index: 1;
     display: flex;
     align-items: center;
@@ -19,7 +19,7 @@
         background-color: var(--black3);
     }
     &.hide {
-        transform: translateY(-60px);
+        transform: translateY(-80px);
     }
 
     .contentWrapper {
@@ -30,7 +30,7 @@
     .logo {
         cursor: pointer;
         img {
-            height: 30px;
+            height: 70px;
         }
     }
     .menuItems {
@@ -56,7 +56,7 @@
             }
             cursor: pointer;
             &:hover {
-                color: var(--pink);
+                color: #c12530;
             }
         }
     }

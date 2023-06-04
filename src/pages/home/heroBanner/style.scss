@@ -16,7 +16,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        opacity: 0.5;
+        opacity: 0.3;
         overflow: hidden;
         .lazy-load-image-background {
             width: 100%;
@@ -35,7 +35,7 @@
         background: linear-gradient(
             180deg,
             rgba(4, 21, 45, 0) 0%,
-            #04152d 79.17%
+            #171717 79.17%
         );
         position: absolute;
         bottom: 0;
@@ -52,7 +52,7 @@
         margin: 0 auto;
         .title {
             font-size: 50px;
-            font-weight: 700;
+            font-weight: 500;
             margin-bottom: 10px;
             @include md {
                 margin-bottom: 0;
@@ -61,7 +61,8 @@
         }
         .subTitle {
             font-size: 18px;
-            font-weight: 500;
+            font-weight: 300;
+            margin-top: 10px;
             margin-bottom: 40px;
             @include md {
                 font-size: 24px;
