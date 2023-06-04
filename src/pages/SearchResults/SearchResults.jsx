@@ -7,14 +7,14 @@ import "./style.scss";
 import ContentWrapper from "../../components/contentWrapper/ContentWrapper";
 import { fetchDataFromApi } from "../../util/tmdb_api";
 import MovieCard from "../../components/movieCard/MovieCard";
-
+import Spinner from "../../components/spinner/Spinner";
 
 
 const SearchResult = () => {
   const [data, setData] = useState(null);
   const [pageNum, setPageNum] = useState(1);
   const [loading, setLoading] = useState(false);
-  const { query } = useParams();
+  const { query } = useParams();    
 
   const fetchInitialData = () => {
     setLoading(true);
@@ -50,7 +50,7 @@ const SearchResult = () => {
 
   return (
     <div className="searchResultsPage">
-      {loading }
+      {loading && <Spinner initial={true} />}
       {!loading && (
         <ContentWrapper>
           {data?.results?.length > 0 ? (
@@ -65,7 +65,7 @@ const SearchResult = () => {
                 dataLength={data?.results?.length || []}
                 next={fetchNextPageData}
                 hasMore={pageNum <= data?.total_pages}
-                loader={loading}
+                loader={<Spinner />}
               >
                 {data?.results.map((item, index) => {
                   if (item.media_type === "person") return;
