@@ -3,6 +3,8 @@
     min-height: 700px;
     padding-top: 100px;
     .resultNotFound {
+        top: 90px;
+        position: fixed;
         font-size: 40px;
         color: var(--black-light);
     }

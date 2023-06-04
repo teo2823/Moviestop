@@ -77,7 +77,7 @@ const SearchResult = () => {
             </>
           ) : (
             <div>
-              <span className="resultNotFound">`Sorry, Results not found :(`</span>
+              <span className="resultNotFound">Sorry, Results not found :(</span>
             </div>
           )}
         </ContentWrapper>
