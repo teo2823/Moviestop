@@ -1,5 +1,5 @@
 # Moviestop
-Its project built with react, to practice api calls, state handling and hooks
+Its a project built with react, to practice api calls, state handling and hooks
 ## Technologies:
 <p align="left">
 
