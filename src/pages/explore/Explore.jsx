@@ -4,7 +4,6 @@ import Select from "react-select";
 import "./style.scss";
 import ContentWrapper from "../../components/contentWrapper/ContentWrapper";
 import MovieCard from "../../components/movieCard/MovieCard";
-import Spinner from "../../components/spinner/Spinner";
 import InfiniteScroll from "react-infinite-scroll-component";
 import useFetch from "../../hooks/useFetch";
 import { fetchDataFromApi } from "../../util/tmdb_api";
@@ -126,7 +125,7 @@ const Explore = () => {
             />
           </div>
         </div>
-        {loading && <Spinner initial={true} />}
+        {loading }
         {!loading && (
           <>
             {data?.results?.length > 0 ? (
@@ -135,7 +134,7 @@ const Explore = () => {
                 dataLength={data?.results?.length || []}
                 next={fetchNextPageData}
                 hasMore={pageNum <= data?.total_pages}
-                loader={<Spinner />}
+                loader={loading}
               >
                 {data?.results?.map((item, index) => {
                   if (item.media_type === "person") return;
